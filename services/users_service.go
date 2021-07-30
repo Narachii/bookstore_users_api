@@ -2,8 +2,10 @@ package services
 
 import (
 	"github.com/Narachii/bookstore_users_api/domain/users"
+	"github.com/Narachii/bookstore_users_api/utils/crypto_utils"
 	"github.com/Narachii/bookstore_users_api/utils/date_utils"
 	"github.com/Narachii/bookstore_users_api/utils/errors"
+	"log"
 )
 
 func GetUser(userId int64) (*users.User, *errors.RestErr) {
@@ -15,10 +17,12 @@ func GetUser(userId int64) (*users.User, *errors.RestErr) {
 }
 func CreateUser(user users.User) (*users.User, *errors.RestErr) {
 	if err := user.Validate(); err != nil {
+		log.Println("hello")
 		return nil, err
 	}
 	user.Status = users.StatusActive
 	user.DateCreated = date_utils.GetNowDBFormat()
+	user.Password = crypto_utils.GetMd5(user.Password)
 	if err := user.Save(); err != nil {
 		return nil, err
 	}
@@ -60,7 +64,7 @@ func DeleteUser(userId int64)  *errors.RestErr{
 	return user.Delete()
 }
 
-func Search(status string)  ([]users.User, *errors.RestErr){
+func Search(status string)  (users.Users, *errors.RestErr){
 	dao := &users.User{}
 	return dao.FindByStatus(status)
 }

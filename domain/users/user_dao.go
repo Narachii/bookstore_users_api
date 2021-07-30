@@ -9,7 +9,7 @@ import (
 
 const (
 	queryInsertUser = "INSERT INTO users(first_name, last_name, email, date_created, status, password) VALUES(?, ?, ?, ?, ?, ?);"
-	querySelectUser = "SELECT * FROM users WHERE id=?"
+	querySelectUser = "SELECT id, first_name, last_name, email, date_created, status FROM users WHERE id=?"
 	queryUpdateUser = "UPDATE users SET first_name=?, last_name=?, email=? WHERE id=?"
 	queryDeleteUser = "DELETE FROM users WHERE id=?"
 	queryFindUserByStatus = "SELECT id, first_name, last_name, email, date_created, status FROM users WHERE id=?"
