@@ -17,7 +17,7 @@ func getUserId(userIdParam string) (int64, *errors.RestErr) {
 	return userId, nil
 }
 
-func Create(c *gin.Context)  {
+func Create(c *gin.Context) {
 	var user users.User
 	if err := c.ShouldBindJSON(&user); err != nil {
 		restErr := errors.NewBadRequestError("invalid json body")
@@ -32,7 +32,7 @@ func Create(c *gin.Context)  {
 	c.JSON(http.StatusCreated, result.Marshall(c.GetHeader("X-Public") == "true"))
 }
 
-func Get(c *gin.Context)  {
+func Get(c *gin.Context) {
 	userId, userErr := getUserId(c.Param("user_id"))
 	if userErr != nil {
 		c.JSON(userErr.Status, userErr)
@@ -74,7 +74,7 @@ func Update(c *gin.Context) {
 	c.JSON(http.StatusOK, result.Marshall(c.GetHeader("X-Public") == "true"))
 }
 
-func Delete(c *gin.Context)  {
+func Delete(c *gin.Context) {
 	userId, idErr := getUserId(c.Param("user_id"))
 	if idErr != nil {
 		c.JSON(idErr.Status, idErr)
@@ -85,10 +85,10 @@ func Delete(c *gin.Context)  {
 		c.JSON(err.Status, err)
 		return
 	}
-	c.JSON(http.StatusOK, map[string]string{"status":"deleted"})
+	c.JSON(http.StatusOK, map[string]string{"status": "deleted"})
 }
 
-func Search(c *gin.Context)  {
+func Search(c *gin.Context) {
 	status := c.Query("status")
 
 	users, err := services.UsersService.Search(status)
@@ -100,7 +100,6 @@ func Search(c *gin.Context)  {
 	c.JSON(http.StatusOK, users.Marshall(c.GetHeader("X-Public") == "true"))
 }
 
-
-func SearchUser(c *gin.Context)  {
+func SearchUser(c *gin.Context) {
 	c.String(http.StatusNotImplemented, "implement me!")
 }
