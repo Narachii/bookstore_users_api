@@ -1,6 +1,7 @@
 package users
 
 import (
+	"github.com/Narachii/bookstore_oauth-go/oauth"
 	"github.com/Narachii/bookstore_users_api/domain/users"
 	"github.com/Narachii/bookstore_users_api/services"
 	"github.com/Narachii/bookstore_users_api/utils/errors"
@@ -33,6 +34,10 @@ func Create(c *gin.Context) {
 }
 
 func Get(c *gin.Context) {
+	if err := oauth.AuthenticateRequest(c.Request); err != nil {
+		c.JSON(err.Status, err)
+		return
+	}
 	userId, userErr := getUserId(c.Param("user_id"))
 	if userErr != nil {
 		c.JSON(userErr.Status, userErr)
@@ -44,7 +49,11 @@ func Get(c *gin.Context) {
 		c.JSON(getErr.Status, getErr)
 		return
 	}
-	c.JSON(http.StatusOK, user.Marshall(c.GetHeader("X-Public") == "true"))
+
+	if oauth.GetCallerId(c.Request) == user.Id {
+		c.JSON(http.StatusOK, user.Marshall(false))
+	}
+	c.JSON(http.StatusOK, user.Marshall(oauth.IsPublic(c.Request)))
 }
 
 func Update(c *gin.Context) {
