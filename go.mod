@@ -3,7 +3,7 @@ module github.com/Narachii/bookstore_users_api
 go 1.16
 
 require (
-	github.com/Narachii/bookstore_oauth-go v0.0.0-20210809044018-4b0603a4ac16
+	github.com/Narachii/bookstore_oauth-go v0.0.0-20210813153734-bba9b62d5a11
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-playground/validator/v10 v10.8.0 // indirect
 	github.com/go-sql-driver/mysql v1.6.0

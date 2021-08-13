@@ -1,5 +1,7 @@
 github.com/Narachii/bookstore_oauth-go v0.0.0-20210809044018-4b0603a4ac16 h1:8AO2U3z1R95pKcJLDpb60pPgAcWPLMAnEURhrGd3fWg=
 github.com/Narachii/bookstore_oauth-go v0.0.0-20210809044018-4b0603a4ac16/go.mod h1:Ddgo+kRe+FQQ7YvPzF4KfcVOX4Fs111d6ga7PngUdEs=
+github.com/Narachii/bookstore_oauth-go v0.0.0-20210813153734-bba9b62d5a11 h1:hb2S4Q0vHFSoXK2GJxsvwkSDTB8oJxMjeg5R+hwgBxQ=
+github.com/Narachii/bookstore_oauth-go v0.0.0-20210813153734-bba9b62d5a11/go.mod h1:Ddgo+kRe+FQQ7YvPzF4KfcVOX4Fs111d6ga7PngUdEs=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

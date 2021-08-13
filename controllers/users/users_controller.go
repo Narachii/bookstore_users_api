@@ -52,6 +52,7 @@ func Get(c *gin.Context) {
 
 	if oauth.GetCallerId(c.Request) == user.Id {
 		c.JSON(http.StatusOK, user.Marshall(false))
+		return
 	}
 	c.JSON(http.StatusOK, user.Marshall(oauth.IsPublic(c.Request)))
 }
